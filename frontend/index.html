@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini ERP</title>
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #eef2f7;
+        color: #1f2937;
+    }
+
+    header {
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+        padding: 20px 40px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .container {
+        padding: 30px 50px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .card {
+        background: white;
+        padding: 20px 25px;
+        margin-bottom: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+    h2 {
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    input {
+        padding: 10px 12px;
+        margin-right: 10px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        outline: none;
+        transition: border 0.2s;
+    }
+
+    input:focus {
+        border-color: #2563eb;
+    }
+
+    button {
+        padding: 10px 16px;
+        border: none;
+        background: #2563eb;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    button:hover {
+        background: #1e40af;
+        transform: scale(1.03);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    thead {
+        background: #f9fafb;
+    }
+
+    th {
+        text-align: left;
+        padding: 12px;
+        font-size: 14px;
+        color: #6b7280;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 14px;
+    }
+
+    tr:hover {
+        background: #f3f4f6;
+    }
+
+    .low-stock {
+        background: #fff5f5;
+        color: #dc2626;
+        font-weight: 500;
+    }
+
+    .delete-btn {
+        background: #ef4444;
+    }
+
+    .delete-btn:hover {
+        background: #b91c1c;
+    }
+
+    .dashboard {
+        margin-top: 15px;
+        font-size: 18px;
+        background: #f1f5f9;
+        padding: 15px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>📦 Mini ERP System</h1>
+
+<div class="card">
+    <h2>Add Product</h2>
+    <input id="name" placeholder="Name">
+    <input id="price" placeholder="Price">
+    <input id="qty" placeholder="Quantity">
+    <button onclick="addProduct()">Add</button>
+</div>
+
+<!-- Products Table -->
+<div class="card">
+    <h2>Products</h2>
+    <input id="search" placeholder="Search product..." onkeyup="searchProducts()">
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+</div>
+
+<div class="card">
+    <h2>Make Sale</h2>
+    <input id="pid" placeholder="Product ID">
+    <input id="sqty" placeholder="Quantity">
+    <button onclick="makeSale()">Sell</button>
+</div>
+
+<div class="card">
+    <h2>Dashboard</h2>
+    <button onclick="loadDashboard()">Load</button>
+    <p id="dash"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
